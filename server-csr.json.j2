@@ -1,0 +1,23 @@
+{
+    "CN": "etcd",
+    "hosts": [
+{% for host in groups['etcd'] %}
+{% if not loop.last %}
+"{{ hostvars[host].inventory_hostname }}",
+{% else %}
+"{{ hostvars[host].inventory_hostname }}"
+{% endif %}
+{% endfor %}
+    ],
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [
+        {
+            "C": "CN",
+            "L": "BeiJing",
+            "ST": "BeiJing"
+        }
+    ]
+}
